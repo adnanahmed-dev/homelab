@@ -1,0 +1,69 @@
+# ==========================================
+# Terraform / OpenTofu
+# ==========================================
+# Local .terraform directory (the provider binaries)
+.terraform/
+
+# Terraform State files (CRITICAL: These contain secrets)
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Terraform variables (where you store your Proxmox API keys)
+*.tfvars
+*.tfvars.json
+
+# Override files
+override.tf
+override.tf.json
+
+# ==========================================
+# Ansible
+# ==========================================
+# Ignore retry files (created when a playbook fails)
+*.retry
+
+# If you use local vault password files (not recommended, but common)
+.ansible_vault_pass
+
+# Ansible Galaxy downloaded roles/collections
+ansible/roles/external/
+ansible/collections/
+
+# ==========================================
+# Kubernetes / Helm / K3s
+# ==========================================
+# Kubeconfig files (contain cluster access tokens)
+.kube/
+kubeconfig
+kubeconfig.yaml
+
+# Helm charts and build artifacts
+charts/
+dist/
+.helm/
+
+# ==========================================
+# Secrets and Environment Variables
+# ==========================================
+# Generic secret files
+.env
+.env.*
+secrets.yml
+*.pem
+*.key
+id_rsa*
+
+# ==========================================
+# OS Specific (Mac & Linux)
+# ==========================================
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+Thumbs.db

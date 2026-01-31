@@ -65,7 +65,7 @@ kubectl apply -f kubernetes/bootstrap/argocd.yaml
 ## 📈 Roadmap & Learning Journey
 
 * [x] Initial Proxmox setup and VM manual testing.
-* [ ] Automate VM provisioning with Terraform & Cloud-Init.
+* [x] Automate VM provisioning with Terraform & Cloud-Init.
 * [ ] Configure K3s cluster via Ansible.
 * [ ] Implement GitOps with ArgoCD.
 * [ ] Deploy Observability stack (Prometheus/Grafana).

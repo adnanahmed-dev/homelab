@@ -1,69 +1,98 @@
 # ==========================================
 # Terraform / OpenTofu
 # ==========================================
-# Local .terraform directory (the provider binaries)
 .terraform/
+# Specifically ignore your Docker plugin cache
+terraform/data/
 
-# Terraform State files (CRITICAL: These contain secrets)
 *.tfstate
 *.tfstate.*
-
-# Crash logs
 crash.log
 crash.*.log
-
-# Terraform variables (where you store your Proxmox API keys)
+# Keep tfvars ignored if you use them for secrets, 
+# but remember we moved your "blueprint" to terraform.tfvars.
+# If you want to commit the blueprint, change this to !terraform.tfvars
 *.tfvars
 *.tfvars.json
 
-# Override files
+.terraform.tfstate.lock.info
+.terraformrc
+terraform.rc
+*.dot
 override.tf
 override.tf.json
+*_override.tf
+*_override.tf.json
 
 # ==========================================
 # Ansible
 # ==========================================
-# Ignore retry files (created when a playbook fails)
 *.retry
-
-# If you use local vault password files (not recommended, but common)
 .ansible_vault_pass
-
-# Ansible Galaxy downloaded roles/collections
-ansible/roles/external/
-ansible/collections/
+# Ignore local logs and facts cache
+ansible/ansible.log
+ansible/facts_cache/
+# Ignore roles/collections downloaded from Galaxy (keep your own!)
+roles/external/
+collections/
 
 # ==========================================
-# Kubernetes / Helm / K3s
+# Kubernetes / Helm / ArgoCD
 # ==========================================
-# Kubeconfig files (contain cluster access tokens)
 .kube/
 kubeconfig
 kubeconfig.yaml
-
-# Helm charts and build artifacts
-charts/
-dist/
+# ArgoCD / Helm local dependencies
+charts/*.tgz
+charts/charts/
 .helm/
+
+# ==========================================
+# Monitoring (Grafana / Prometheus)
+# ==========================================
+# Ignore local database storage if running via Docker
+grafana/data/
+prometheus/data/
+alertmanager/data/
+
+# ==========================================
+# Networking & VPN (Tailscale)
+# ==========================================
+# Tailscale state and local socket files
+.tailscale/
+tailscale.state
+tailscale.sock
+
+# ==========================================
+# CI/CD (Jenkins / GitLab Runner)
+# ==========================================
+# Jenkins workspace and secret files
+.jenkins/
+jenkins.war
+# GitLab runner config and build logs
+.gitlab-runner/
+builds/
+artifacts/
 
 # ==========================================
 # Secrets and Environment Variables
 # ==========================================
-# Generic secret files
 .env
 .env.*
 secrets.yml
 *.pem
 *.key
+*.pub
 id_rsa*
+# Track the example but never the real ones
+!.env.example
 
 # ==========================================
-# OS Specific (Mac & Linux)
+# OS / Editors
 # ==========================================
 .DS_Store
-.AppleDouble
-.LSOverride
-Icon
-.Spotlight-V100
-.Trashes
 Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

@@ -1,0 +1,13 @@
+services:
+  terraform:
+    image: hashicorp/terraform:1.14
+    container_name: terraform
+    volumes:
+      - .:/config
+      - ./data:/data
+    environment:
+      # - TF_PLUGIN_CACHE_DIR=/data/plugin-cache  # Tells TF to look here first
+      - TF_DATA_DIR=/data  # Store TF state files here
+    env_file:
+      - .env
+    working_dir: /config
